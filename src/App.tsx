@@ -1,21 +1,22 @@
 import * as React from 'react';
 import './App.css';
+import { AppBar, IconButton, Typography, Button, Toolbar } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
-import logo from './logo.svg';
 
 class App extends React.Component {
   public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
+    return <AppBar position="static">
+    <Toolbar>
+      <IconButton color="inherit" aria-label="Menu">
+        <MenuIcon />
+      </IconButton>
+      <Typography variant="h6" color="inherit">
+        News
+      </Typography>
+      <Button color="inherit">Login</Button>
+    </Toolbar>
+    </AppBar>
   }
 }
 
