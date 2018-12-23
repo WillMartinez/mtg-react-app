@@ -6,11 +6,11 @@ import {
   Typography,
   Button,
   Toolbar,
-  Grid,
   withStyles,
   Theme,
   createStyles,
-  MuiThemeProvider
+  MuiThemeProvider,
+  WithStyles
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import theme from './theme';
@@ -30,24 +30,36 @@ const styles = ({ palette, spacing }: Theme) =>
     }
   });
 
-class App extends React.Component {
+type State = {
+  open: boolean;
+};
+
+class App extends React.Component<WithStyles<typeof styles>, State> {
   public render() {
     return (
-      <Grid container={true}>
+      <div className={this.props.classes.root}>
         <MuiThemeProvider theme={theme}>
           <AppBar position="static">
             <Toolbar>
-              <IconButton color="inherit" aria-label="Menu">
+              <IconButton
+                className={this.props.classes.menuButton}
+                color="inherit"
+                aria-label="Menu"
+              >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" color="inherit">
+              <Typography
+                className={this.props.classes.grow}
+                variant="h6"
+                color="inherit"
+              >
                 Draft
               </Typography>
               <Button color="inherit">Login</Button>
             </Toolbar>
           </AppBar>
         </MuiThemeProvider>
-      </Grid>
+      </div>
     );
   }
 }
